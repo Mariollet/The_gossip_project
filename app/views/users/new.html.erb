@@ -1,4 +1,5 @@
 <html>
+  <%= render "shared/navbar" %>
   <body>
     <br><h1>Créer un user :</h1><br>
 
@@ -13,17 +14,35 @@
       </div>
     <% end %>
 
-    <form action=<%= users_path %> method = "Post">
-      <input type= "hidden" name= "authenticity_token" value = "<%= form_authenticity_token%>">
-      Nom de l'user :<br>
-      <input type = "first_name" name = "first_name"><br >
-      Prénom de l'user :<br>
-      <input type = "last_name" name = "last_name"><br>
-      <br>
-      <input type = "submit" value = "Valider">
-    </form><br>
-
-    <%= link_to "Home", root_path %><br>
-
+    <%= form_for @user do |f| %>
+      <div class ="form-group">
+        <label> - Prénom : </label>
+        <%=  f.text_field :first_name, class:"form-control"%>
+      </div>
+      <div class ="form-group">
+        <label> - Nom : </label>
+        <%=  f.text_field :last_name, class:"form-control"%>
+      </div>
+      <div class ="form-group">
+        <label> - Age : </label>
+        <%=  f.text_field :age, class:"form-control"%>
+      </div>
+      <div class ="form-group">
+        <label> - Email : </label>
+        <%=  f.text_field :email, class:"form-control"%>
+      </div>
+      <div class ="form-group">
+        <label> - Ville : </label>
+        <%=  f.text_field :city, class:"form-control"%>
+      </div>
+      <div class ="form-group">
+        <label> - Bio : </label>
+        <%=  f.text_area :bio, class:"form-control"%>
+      </div>
+      <div class ="form-group">
+        <button type ="submit" class="btn btn-primary">Valider</button>
+      </div>
+    <%end%>
+   
   </body>
 </html>

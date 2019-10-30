@@ -1,6 +1,6 @@
   <%= render "shared/navbar" %>
 
-<br><h1>Voici le user :</h1><br>
+<br><h1>Voici la Ville :</h1><br>
 
 <div class="card text-center">
   <div class="card-header">
@@ -17,13 +17,15 @@
     </ul>
   </div>
   <div class="card-body">
-    <h4 class="card-title"><%= @user.first_name %> <%= @user.last_name%></h4>
-    <h5 class="card-title">L'auteur a créé <%= @user.gossips.count %> gossips :</h5><br>
+    <h4 class="card-title"><%= @city.name %></h4>
+    <h5 class="card-title"> La ville a <%= @city.user.count %> auteurs :</h5><br>
+    <p class="card-text"><% @user.each do |user| %>
+      <li> <strong> <%= user.first_name %> </strong> <%= user.last_name %> | <%= link_to "Voir l'auteur", user_path(user) %>  </li>
+    <% end %><br></p>
+    <h5 class="card-title"> La ville a <%= @city.gossip.count %> gossips :</h5><br>
     <p class="card-text"><% @gossip.each do |gossip| %>
       <li> <strong> <%= gossip.title %> </strong> : <%= gossip.content %> | <%= link_to "Voir le gossip", gossip_path(gossip) %>  </li>
     <% end %><br></p>
-    <h6 class="card-text"><%= @user.city.name %></h6><br>
-    <a href="<%= city_path(@user.id) %>" class="btn btn-primary">Voir la ville</a>
   </div>
 </div>
 

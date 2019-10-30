@@ -1,4 +1,12 @@
+  <%= render "shared/navbar" %>
+
 <br><h1>Voici tout les gossips :</h1><br>
+
+  <% if @gossip.save %>
+    <div class="alert alert-success" role="alert">
+      <p>Gossip créer/modifier avec succés ! </p>
+    </div>
+  <% end %>
 
 <% @gossips.each do |gossip| %>
   Auteur : <%= gossip.user.first_name %> | <%= link_to "Voir l'user", user_path(gossip.user.id) %><br>
@@ -6,4 +14,4 @@
   Contenu :<%= gossip.content %><br><br>
 <% end %>
 
-<%= link_to "Home", root_path %><br>
+<%= link_to "--> Ajouter un gossip <--", new_gossip_path %><br>

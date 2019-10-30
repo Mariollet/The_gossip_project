@@ -1,8 +1,17 @@
-<br><h1>Voici tout les users :</h1><br>
+  <%= render "shared/navbar" %>
 
-<% @user.each do |user| %>
+<br><h1>Voici tout les auteurs :</h1><br>
+
+  <% if @user.save %>
+    <div class="alert alert-success" role="alert">
+      <p>Auteur crée avec succés ! :</p>
+    </div>
+  <% end %>
+
+<% @users.each do |user| %>
   Prénom : <%= user.first_name %><br>
-  Nom : <%= user.last_name %><br><br>
+  Nom : <%= user.last_name %><br>
+  <%= link_to "Voir l'auteur", user_path(user.id) %><br><br>
 <% end %>
 
-<%= link_to "Home", root_path %><br>
+<%= link_to "--> Ajouter un auteur <--", new_user_path %><br>

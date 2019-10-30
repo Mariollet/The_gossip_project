@@ -1,18 +1,36 @@
 <html>
+
+  <%= render "shared/navbar" %>
+
   <body>
-    <br><h1>Bienvenue sur The Gossip Project</h1><br>
 
-    <%= link_to "Gossips", gossips_path %><br>
-    <%= link_to "New Gossip", new_gossip_path %><br>
-    <%= link_to "Users", users_path %><br>
-    <%= link_to "New User", new_user_path %><br><br>
+    <div class="jumbotron"><br>
+      <h1 class="display-4">Bienvenue sur The Gossip Project</h1>
+      <p class="lead">Rien de mieux que des gossips pour bien commencer la journée !</p>
+    </div>
 
+    <%= link_to "Gossips", gossips_path %> | 
+    <%= link_to "New Gossip", new_gossip_path %> | 
+    <%= link_to "Users", users_path %> | 
+    <%= link_to "New User", new_user_path %> | 
+    <%= link_to "City", cities_path %>
+    <br><br>
+
+    <div class="card-columns">
     <% @gossips.each do |gossip| %>
-      Auteur : <%= gossip.user.first_name %><br>
-      Titre : <%= gossip.title %><br>
-      <a href="<%= gossip_path(gossip.id) %>" class="btn btn-primary">Lire la suite</a>
-      <a href="<%= user_path(gossip.user.id) %>" class="btn btn-primary">Voir User</a><br><br>
+      <div class="card">
+          <div class="card-body">
+            <h5 class="card-title"> <%= gossip.title %> </h5>
+            <p class="card-text"> <%= gossip.content %> </p>
+            <footer class="blockquote-footer">
+              <small class="text-muted">
+                <strong><%= gossip.user.first_name %></strong> <cite title="Détails du gossip"><%= link_to "voir détails", gossip_path(gossip) %></cite>
+              </small>
+            </footer>
+          </div>
+      </div>
     <% end %>
 
   </body>
+
 </html>

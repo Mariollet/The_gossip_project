@@ -1,0 +1,13 @@
+  <%= render "shared/navbar" %>
+
+<br><h1>Voici toutes les villes :</h1><br>
+
+  <% if @city.save %>
+    <div class="alert alert-success" role="alert">
+      <p>Ville crée avec succés ! :</p>
+    </div>
+  <% end %>
+
+<% @cities.each do |city| %>
+  Ville : <%= city.name %> | <%= link_to "Voir la ville", city_path(city.id) %><br>
+<% end %><br>

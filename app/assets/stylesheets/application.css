@@ -13,3 +13,20 @@
  *= require_tree .
  *= require_self
  */
+
+ .navbar {
+   margin-left: -42px;
+   margin-right: -42px;
+   margin-top: -42px;
+ }
+ .jumbotron {
+  margin-left: -42px;
+  margin-right: -42px;
+  margin-top: -42px;
+  text-align: center;
+}
+ body {
+   background-image:linear-gradient(white, rgb(163, 163, 163));
+   margin: 42px;
+   font-size: 1.2em;
+ }

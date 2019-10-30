@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root "home#welcome"
-  resources :users, only: [:new,:create,:index,:show]
-  resources :gossips, only: [:new,:create,:index,:show]
-
+  resources :users
+  resources :gossips
+  resources :cities, only: [:index,:show]
 end

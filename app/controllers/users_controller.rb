@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
 
   def index
-    @user = User.all
+    @user = User.new
+    @users = User.all
   end
 
   def show
     @user = User.find(params[:id])
-    @gossips = User.find(params[:id]).gossips
+    @gossip = User.find(params[:id]).gossips
   end
 
   def new
@@ -14,10 +15,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(first_name: params[:first_name],last_name: params[:last_name])
-
+    c = City.find_by(name: params[:user][:city])
+    if c == nil
+      c = City.last
+    end
+    @user = User.new(first_name: params[:user][:first_name],last_name: params[:user][:last_name],age: params[:user][:age],email: params[:user][:email],city_id: c.id,email: params[:user][:email])
+    @users = User.all
     if @user.save
-      redirect_to "/"
+      render "index"
     else
       render "new"
     end

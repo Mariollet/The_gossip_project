@@ -1,10 +1,25 @@
+  <%= render "shared/navbar" %>
+
 <br><h1>Voici le gossip :</h1><br>
 
-<br><h4>Auteur du gossip :</h4><br>
-<%= @gossips.user.first_name %> <%= @gossips.user.last_name%> | <%= link_to "Voir l'user", user_path(@gossips.user.id) %><br><br>
-<h4>Titre du gossip :</h4><br>
-<%= @gossips.title %><br><br>
-<h4>Contenu du gossip :</h4><br>
-<%= @gossips.content %><br><br>
-
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-pills card-header-pills">
+      <li class="nav-item">
+        <a class="btn btn-primary" href="<%= edit_gossip_path(@gossip.id)%>">Modifier</a>
+      </li>
+      <li class="nav-item">
+        <a class="btn btn-danger" href="<%= gossip_path %>" data-confirm="Êtes-vous sûr ?" data-method="DELETE">Supprimer</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+    <h4 class="card-title"><%= @gossip.user.first_name %> <%= @gossip.user.last_name%> :</h4>
+    <h5 class="card-title"><%= @gossip.title %></h5>
+    <p class="card-text"><%= @gossip.content %></p>
+    <h6 class="card-text">Made in <%= @gossip.user.city.name %></h6><br>
+    <a href="<%= user_path(@gossip.user.id) %>" class="btn btn-primary">Voir l'auteur</a>
+  </div>
+</div>
+<br>
 <%= link_to "Home", root_path %><br>
