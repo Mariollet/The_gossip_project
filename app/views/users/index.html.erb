@@ -1,0 +1,8 @@
+<br><h1>Voici tout les users :</h1><br>
+
+<% @user.each do |user| %>
+  Prénom : <%= user.first_name %><br>
+  Nom : <%= user.last_name %><br><br>
+<% end %>
+
+<%= link_to "Home", root_path %><br>

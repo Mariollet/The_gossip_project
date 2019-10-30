@@ -1,0 +1,13 @@
+<br><h1>Voici le user :</h1><br>
+
+<br><h4>Prénom de l'user :</h4>
+<%= @user.first_name %><br><br>
+<h4>Nom de l'user :</h4>
+<%= @user.last_name%><br><br>
+<h4>L'auteur a créé <%= @user.gossips.count %> gossips : </h4><br>
+
+<% @gossips.each do |gossip| %>
+  <li> <strong> <%= gossip.title %> </strong> : <%= gossip.content %> | <%= link_to "Voir le gossip", gossip_path(gossip) %>  </li>
+<% end %><br>
+
+<%= link_to "Home", root_path %><br>

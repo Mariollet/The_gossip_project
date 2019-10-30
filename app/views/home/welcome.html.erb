@@ -1,0 +1,18 @@
+<html>
+  <body>
+    <br><h1>Bienvenue sur The Gossip Project</h1><br>
+
+    <%= link_to "Gossips", gossips_path %><br>
+    <%= link_to "New Gossip", new_gossip_path %><br>
+    <%= link_to "Users", users_path %><br>
+    <%= link_to "New User", new_user_path %><br><br>
+
+    <% @gossips.each do |gossip| %>
+      Auteur : <%= gossip.user.first_name %><br>
+      Titre : <%= gossip.title %><br>
+      <a href="<%= gossip_path(gossip.id) %>" class="btn btn-primary">Lire la suite</a>
+      <a href="<%= user_path(gossip.user.id) %>" class="btn btn-primary">Voir User</a><br><br>
+    <% end %>
+
+  </body>
+</html>

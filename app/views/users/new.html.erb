@@ -1,0 +1,29 @@
+<html>
+  <body>
+    <br><h1>Créer un user :</h1><br>
+
+    <% if @user.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <p>Nous n'avons pas réussi à créer l'user pour la (ou les) raison(s) suivante(s) :</p>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <form action=<%= users_path %> method = "Post">
+      <input type= "hidden" name= "authenticity_token" value = "<%= form_authenticity_token%>">
+      Nom de l'user :<br>
+      <input type = "first_name" name = "first_name"><br >
+      Prénom de l'user :<br>
+      <input type = "last_name" name = "last_name"><br>
+      <br>
+      <input type = "submit" value = "Valider">
+    </form><br>
+
+    <%= link_to "Home", root_path %><br>
+
+  </body>
+</html>

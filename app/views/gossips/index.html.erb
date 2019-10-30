@@ -1,0 +1,9 @@
+<br><h1>Voici tout les gossips :</h1><br>
+
+<% @gossips.each do |gossip| %>
+  Auteur : <%= gossip.user.first_name %> | <%= link_to "Voir l'user", user_path(gossip.user.id) %><br>
+  Titre : <%= gossip.title %> | <%= link_to "Voir le gossip", gossip_path(gossip.id) %><br>
+  Contenu :<%= gossip.content %><br><br>
+<% end %>
+
+<%= link_to "Home", root_path %><br>

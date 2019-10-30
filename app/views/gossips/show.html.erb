@@ -1,0 +1,10 @@
+<br><h1>Voici le gossip :</h1><br>
+
+<br><h4>Auteur du gossip :</h4><br>
+<%= @gossips.user.first_name %> <%= @gossips.user.last_name%> | <%= link_to "Voir l'user", user_path(@gossips.user.id) %><br><br>
+<h4>Titre du gossip :</h4><br>
+<%= @gossips.title %><br><br>
+<h4>Contenu du gossip :</h4><br>
+<%= @gossips.content %><br><br>
+
+<%= link_to "Home", root_path %><br>
