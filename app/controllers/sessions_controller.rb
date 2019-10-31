@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
   
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
-      flash[:sucess] = 'Login sucess'
+      flash[:success] = 'Login sucess'
       redirect_to welcome_path
   
     else

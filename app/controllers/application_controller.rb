@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
     if User.find_by(id: session[:user_id]) != nil
       return User.find_by(id: session[:user_id])
     else
-      return "Non connecté"
+      return nil
     end
 
   end

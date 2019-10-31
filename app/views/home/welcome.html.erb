@@ -9,16 +9,13 @@
       <p class="lead">Rien de mieux que des gossips pour bien commencer la journée !</p>
     </div>
 
-
-    <% if session[:user_id] != nil %> 
-      <%= flash[:sucess] %>
+    <% if User.find_by(id: session[:user_id]) != nil %> 
+      <%= flash[:success] %>
       <h2>Bienvenue <%= User.find_by(id: session[:user_id]).first_name %> !</h2>
-      <a class="btn btn-danger" href="<%= session_path(session.id) %>" data-confirm="Êtes-vous sûr ?" data-method="DELETE">Se déconnecter</a><br><br>
     <%else%>
       <div class="alert alert-danger" role="alert"><br>
         <p>Vous n'êtes pas connecter !<br>
-        <a class="btn btn-primary" href="<%= new_session_path %>">Se connecter</a> | <a class="btn btn-primary" href="<%= new_user_path %>">S'inscrire</a><br>
-<br>
+        <a class="btn btn-primary" href="<%= new_session_path %>">Se connecter</a> | <a class="btn btn-primary" href="<%= new_user_path %>">S'inscrire</a><br><br>
       </div>
     <% end %>
 
@@ -27,7 +24,6 @@
     <%= link_to "Gossips", gossips_path %> | 
     <%= link_to "New Gossip", new_gossip_path %> | 
     <%= link_to "Users", users_path %> | 
-    <%= link_to "New User", new_user_path %> | 
     <%= link_to "City", cities_path %>
     <br><br>
 

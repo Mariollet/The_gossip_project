@@ -5,6 +5,7 @@
 * Rails version '5.2.3'
 
 Start:
+- `$ rails db:create`
 - `$ rails db:migrate`
 - `$ rails db:seed`
 - `$ rails server`

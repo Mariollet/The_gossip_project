@@ -17,7 +17,9 @@ user_array = []
 20.times do |i|
   u = User.create!(first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
-    city: city_array.sample)
+    city: city_array.sample,
+    password: Faker::String.random(length: 6..12),
+    email: Faker::Internet.email)
   user_array << u
   puts "#{i+=1} Auteurs créer"
 end

@@ -28,12 +28,12 @@ class GossipsController < ApplicationController
   
   def edit
     @gossip = Gossip.find(params[:id])
-  endlsof -wni tcp:3000
+  end
 
 
   def update
     @users = User.all
-    @user = User.find(params[:id])
+    @user = current_user
     @gossips = Gossip.all
     @gossip = Gossip.find(params[:id])
     if @gossip.update(gossip_params)
@@ -46,6 +46,7 @@ class GossipsController < ApplicationController
   def destroy
     @gossip = Gossip.find(params[:id])
     @gossip.destroy
+    flash[:danger] = "Gossip supprimer avec succés !"
     redirect_to gossips_path
   end
 

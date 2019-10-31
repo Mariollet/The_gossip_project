@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  has_many :gossips
+  has_many :gossips, dependent: :destroy
   belongs_to :city
   validates :first_name, presence: true
   validates :last_name, presence: true

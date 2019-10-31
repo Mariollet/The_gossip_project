@@ -14,19 +14,13 @@
  *= require_self
  */
 
- .navbar {
-   margin-left: -42px;
-   margin-right: -42px;
-   margin-top: -42px;
-}
  .jumbotron {
   margin-left: -42px;
   margin-right: -42px;
-  margin-top: -42px;
-  text-align: center;
+  margin-top: -20px;
 }
  body {
-   background-image:linear-gradient(rgb(236, 236, 236), rgb(107, 107, 107));
+   background-image:linear-gradient(rgb(236, 236, 236), rgb(82, 82, 82));
    margin: 42px;
    font-size: 1.4em;
    font-family: Georgia, 'Times New Roman', Times, serif;

@@ -2,18 +2,19 @@
 
 <br><h1>Voici tout les gossips :</h1><br>
 
-<%= link_to "--> Ajouter un gossip <--", new_gossip_path %><br><br>
+<%= link_to "--> Ajouter un gossip <--", new_gossip_path %><br>
+<%= flash[:danger] %><br><br>
 
-  <% if @gossip.save %>
-    <div class="alert alert-success" role="alert">
-      <p>Gossip créer/modifier avec succés ! </p>
-    </div>
-  <% end %>
+<% if @gossip.save %>
+  <div class="alert alert-success" role="alert">
+    <p>Gossip créer/modifier avec succés ! </p>
+  </div>
+<% end %>
 
 <% @gossips.each do |gossip| %>
-  Auteur : <%= gossip.user.first_name %> | <%= link_to "Voir l'auteur", user_path(gossip.user.id) %><br>
-  Titre : <%= gossip.title %> | <%= link_to "Voir le gossip", gossip_path(gossip.id) %><br>
-  Contenu :<%= gossip.content %><br><br>
+  <a>- Auteur : <%= gossip.user.first_name %> <%= gossip.user.last_name %></a> | <%= link_to "Voir l'auteur", user_path(gossip.user.id) %><br>
+  <a>- Titre : <%= gossip.title %></a> | <%= link_to "Voir le gossip", gossip_path(gossip.id) %><br>
+  <a>- Contenu : <%= gossip.content %></a><br><br>
 <% end %>
 
 <%= link_to "--> Ajouter un gossip <--", new_gossip_path %><br>

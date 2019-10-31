@@ -27,6 +27,7 @@ class UsersController < ApplicationController
           render "users/new"
         end
         @users = User.all
+        session[:user_id] = @user.id
         render "index"
       else
         render "users/new"
@@ -35,7 +36,7 @@ class UsersController < ApplicationController
   end
   
   def edit
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def update
@@ -56,12 +57,10 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:id])
+    @user = current_user
     @gossips = @user.gossips
-    @gossips.length.times do |i|
-      @gossips[i].destroy
-    end
     @user.destroy
+    current_user = nil
     redirect_to users_path
   end
 

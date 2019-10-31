@@ -4,14 +4,18 @@
 
 <div class="card text-center">
   <div class="card-header">
-    <ul class="nav nav-pills card-header-pills">
-      <li class="nav-item">
-        <a class="btn btn-primary" href="<%= edit_gossip_path(@gossip.id)%>">Modifier</a>
-      </li>
-      <li class="nav-item">
-        <a class="btn btn-danger" href="<%= gossip_path %>" data-confirm="Êtes-vous sûr ?" data-method="DELETE">Supprimer</a>
-      </li>
-    </ul>
+  <% if User.find_by(id: session[:user_id]) != nil %>
+    <% if User.find_by(id: session[:user_id]).id == @gossip.user.id%>
+      <ul class="nav nav-pills card-header-pills">
+        <li class="nav-item">
+          <a class="btn btn-primary" href="<%= edit_gossip_path(@gossip.id)%>">Modifier</a>
+        </li>
+        <li class="nav-item">
+          <a class="btn btn-danger" href="<%= gossip_path %>" data-confirm="Êtes-vous sûr ?" data-method="DELETE">Supprimer</a>
+        </li>
+      </ul>
+      <%end%>
+    <%end%>
   </div>
   <div class="card-body">
     <h4 class="card-title"><%= @gossip.user.first_name %> <%= @gossip.user.last_name%> :</h4>
