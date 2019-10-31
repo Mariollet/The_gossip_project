@@ -2,6 +2,8 @@
 
 <br><h1>Voici tout les gossips :</h1><br>
 
+<%= link_to "--> Ajouter un gossip <--", new_gossip_path %><br><br>
+
   <% if @gossip.save %>
     <div class="alert alert-success" role="alert">
       <p>Gossip créer/modifier avec succés ! </p>
@@ -9,7 +11,7 @@
   <% end %>
 
 <% @gossips.each do |gossip| %>
-  Auteur : <%= gossip.user.first_name %> | <%= link_to "Voir l'user", user_path(gossip.user.id) %><br>
+  Auteur : <%= gossip.user.first_name %> | <%= link_to "Voir l'auteur", user_path(gossip.user.id) %><br>
   Titre : <%= gossip.title %> | <%= link_to "Voir le gossip", gossip_path(gossip.id) %><br>
   Contenu :<%= gossip.content %><br><br>
 <% end %>

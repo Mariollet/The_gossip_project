@@ -2,9 +2,11 @@
 
 <br><h1>Voici tout les auteurs :</h1><br>
 
+<%= link_to "--> Ajouter un auteur <--", new_user_path %><br><br>
+
   <% if @user.save %>
     <div class="alert alert-success" role="alert">
-      <p>Auteur crée avec succés ! :</p>
+      <p>Auteur créer/modifier avec succés ! :</p>
     </div>
   <% end %>
 

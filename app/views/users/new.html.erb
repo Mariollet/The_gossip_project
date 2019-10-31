@@ -1,7 +1,7 @@
 <html>
   <%= render "shared/navbar" %>
   <body>
-    <br><h1>Créer un user :</h1><br>
+    <br><h1>Créer un auteur :</h1><br>
 
     <% if @user.errors.any? %>
       <div class="alert alert-danger" role="alert">
@@ -13,7 +13,7 @@
         </ul>
       </div>
     <% end %>
-
+    
     <%= form_for @user do |f| %>
       <div class ="form-group">
         <label> - Prénom : </label>
@@ -24,20 +24,29 @@
         <%=  f.text_field :last_name, class:"form-control"%>
       </div>
       <div class ="form-group">
+        <label> - Mot de passe : </label>
+        <%=  f.password_field :password, class:"form-control"%>
+      </div>
+      <%= flash[:danger] %>
+      <div class ="form-group">
+        <label> - Confirmer mot de passe : </label>
+        <%=  f.password_field :confirm_password, class:"form-control"%>
+      </div>
+      <div class ="form-group">
         <label> - Age : </label>
         <%=  f.text_field :age, class:"form-control"%>
       </div>
       <div class ="form-group">
         <label> - Email : </label>
-        <%=  f.text_field :email, class:"form-control"%>
-      </div>
-      <div class ="form-group">
-        <label> - Ville : </label>
-        <%=  f.text_field :city, class:"form-control"%>
+        <%=  f.email_field :email, class:"form-control"%>
       </div>
       <div class ="form-group">
         <label> - Bio : </label>
         <%=  f.text_area :bio, class:"form-control"%>
+      </div>
+      <div class= "form-group">
+        <label> City </label>
+        <%= select(:user, :city_id, City.pluck(:name, :id), class: "form-control") %>
       </div>
       <div class ="form-group">
         <button type ="submit" class="btn btn-primary">Valider</button>

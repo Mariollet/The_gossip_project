@@ -1,4 +1,5 @@
 class GossipsController < ApplicationController
+  before_action :authenticate_user, only: [:new,:edit,:destroy]
 
   def index 
     @gossip = Gossip.new
@@ -6,7 +7,7 @@ class GossipsController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    puts params
     @gossip = Gossip.find(params[:id])
   end
 
@@ -16,7 +17,7 @@ class GossipsController < ApplicationController
 
   def create
     u = User.last
-    @gossip = Gossip.new(title: params[:gossip][:title],content: params[:gossip][:content],user: u,city_id: u.city.id)
+    @gossip = Gossip.new(title: params[:gossip][:title],content: params[:gossip][:content],user: current_user,city_id: current_user.city_id)
     @gossips = Gossip.all
     if @gossip.save
       render "index"
@@ -27,9 +28,11 @@ class GossipsController < ApplicationController
   
   def edit
     @gossip = Gossip.find(params[:id])
-  end
+  endlsof -wni tcp:3000
+
 
   def update
+    @users = User.all
     @user = User.find(params[:id])
     @gossips = Gossip.all
     @gossip = Gossip.find(params[:id])
@@ -41,13 +44,19 @@ class GossipsController < ApplicationController
   end
 
   def destroy
-    @gossips = Gossip.all
     @gossip = Gossip.find(params[:id])
     @gossip.destroy
     redirect_to gossips_path
   end
 
   private
+
+  def authenticate_user
+    unless current_user
+      flash[:danger] = "Tu veux commérer ? Connecte toi !"
+      redirect_to new_session_path
+    end
+  end
 
   def gossip_params
     gossip_params = params.require(:gossip).permit(:title,:content)
