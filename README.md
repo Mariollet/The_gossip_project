@@ -13,4 +13,4 @@ Start:
 Go to: 
 - `localhost:3000`
 
-### Made in Montpellier
+### Made in Montpellie
