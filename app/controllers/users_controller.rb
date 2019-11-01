@@ -17,11 +17,11 @@ class UsersController < ApplicationController
 
   def create
     if params[:user][:password] != params[:user][:confirm_password]
-      @user = User.new(first_name: params[:user][:first_name],last_name: params[:user][:last_name],age: params[:user][:age],email: params[:user][:email],city_id: params[:user][:city_id],email: params[:user][:email],password: params[:user][:password],bio: params[:user][:bio])
+      @user = user_new
       flash[:danger] = "La confirmation du mot de passe doit correspondre au mot de passe saisi précédemment."
       render "users/new"
     else
-      @user = User.new(first_name: params[:user][:first_name],last_name: params[:user][:last_name],age: params[:user][:age],email: params[:user][:email],city_id: params[:user][:city_id],email: params[:user][:email],password: params[:user][:password],bio: params[:user][:bio])
+      @user = user_new
       if @user.save
         if params[:user][:password] != params[:user][:confirm_password]
           render "users/new"
@@ -65,6 +65,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user_new
+    User.new(first_name: params[:user][:first_name].capitalize,last_name: params[:user][:last_name].capitalize,age: params[:user][:age],city_id: params[:user][:city_id],email: params[:user][:email],password: params[:user][:password],bio: params[:user][:bio].capitalize)
+  end
 
   def authenticate_user
     unless current_user

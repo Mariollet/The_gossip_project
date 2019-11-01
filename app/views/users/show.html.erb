@@ -21,11 +21,13 @@
   </div>
   <div class="card-body">
     <h4 class="card-title"><strong><%= @user.first_name %> <%= @user.last_name%></strong></h4>
+    <h6 class="card-text"><%= @user.bio %></h6>
+    <h6 class="card-text"><%= @user.age %> ans</h6>
     <h5 class="card-title">L'auteur a créé <%= @user.gossips.count %> gossips :</h5><br>
     <p class="card-text"><% @gossip.each do |gossip| %>
       <li> <strong> <%= gossip.title %> </strong> : <%= gossip.content %> | <%= link_to "Voir le gossip", gossip_path(gossip) %>  </li>
     <% end %><br></p>
-    <h5 class="card-text"><%= @user.city.name %></h5><br>
+    <h5 class="card-text">Made in <%= @user.city.name %></h5><br>
     <a href="<%= city_path(@user.city.id) %>" class="btn btn-primary">Voir la ville</a>
   </div>
 </div>
