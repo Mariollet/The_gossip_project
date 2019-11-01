@@ -17,7 +17,7 @@ class GossipsController < ApplicationController
 
   def create
     u = User.last
-    @gossip = Gossip.new(title: params[:gossip][:title].capitalize,content: params[:gossip][:content],user: current_user,city_id: current_user.city_id)
+    @gossip = Gossip.new(title: params[:gossip][:title].capitalize,content: params[:gossip][:content].capitalize,user: current_user,city_id: current_user.city_id)
     @gossips = Gossip.all
     if @gossip.save
       render "index"
