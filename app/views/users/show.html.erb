@@ -1,6 +1,8 @@
   <%= render "shared/navbar" %>
 
-<br><h1>Voici l'auteur :</h1><br>
+<div class="jumbotron"><br>
+  <h1 class="display-4">Voici l'auteur :</h1>
+</div>
 
 <div class="card text-center">
   <div class="card-header">
@@ -18,7 +20,7 @@
     <%end%>
   </div>
   <div class="card-body">
-    <h4 class="card-title"><%= @user.first_name %> <%= @user.last_name%></h4>
+    <h4 class="card-title"><strong><%= @user.first_name %> <%= @user.last_name%></strong></h4>
     <h5 class="card-title">L'auteur a créé <%= @user.gossips.count %> gossips :</h5><br>
     <p class="card-text"><% @gossip.each do |gossip| %>
       <li> <strong> <%= gossip.title %> </strong> : <%= gossip.content %> | <%= link_to "Voir le gossip", gossip_path(gossip) %>  </li>
@@ -29,4 +31,4 @@
 </div>
 <br>
 
-<%= link_to "Home", root_path %><br>
+<%= link_to "Home", welcome_path %><br>

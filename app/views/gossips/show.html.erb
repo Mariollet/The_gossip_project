@@ -1,6 +1,8 @@
   <%= render "shared/navbar" %>
 
-<br><h1>Voici le gossip :</h1><br>
+<div class="jumbotron"><br>
+  <h1 class="display-4">Voici tout les gossips :</h1>
+</div>
 
 <div class="card text-center">
   <div class="card-header">
@@ -18,12 +20,12 @@
     <%end%>
   </div>
   <div class="card-body">
-    <h4 class="card-title"><%= @gossip.user.first_name %> <%= @gossip.user.last_name%> :</h4>
-    <h5 class="card-title"><%= @gossip.title %></h5>
+    <h4 class="card-title"><strong><%= @gossip.user.first_name %> <%= @gossip.user.last_name%></strong></h4>
+    <h5 class="card-title"><strong><%= @gossip.title %></strong> :</h5>
     <p class="card-text"><%= @gossip.content %></p>
     <h6 class="card-text">Made in <%= @gossip.user.city.name %></h6><br>
     <a href="<%= user_path(@gossip.user.id) %>" class="btn btn-primary">Voir l'auteur</a>
   </div>
 </div>
 <br>
-<%= link_to "Home", root_path %><br>
+<%= link_to "Home", welcome_path %><br>

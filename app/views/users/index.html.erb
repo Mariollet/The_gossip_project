@@ -1,15 +1,27 @@
   <%= render "shared/navbar" %>
 
-<br><h1>Voici tout les auteurs :</h1><br>
+<div class="jumbotron"><br>
+  <h1 class="display-4">Voici tout les auteurs :</h1>
+</div>
 
   <% if @user.save %>
     <div class="alert alert-success" role="alert">
       <p>Auteur créer/modifier avec succés ! :</p>
     </div>
-  <% end %>
+  <% end %> 
 
-<% @users.each do |user| %>
-  Prénom : <%= user.first_name %><br>
-  Nom : <%= user.last_name %><br>
-  <%= link_to "Voir l'auteur", user_path(user.id) %><br><br>
-<% end %>
+    <div class="card-columns">
+    <% @users.each do |user| %>
+      <div class="card">
+          <div class="card-body">
+            <h4 class="card-title"><strong><%= user.first_name %> <%= user.last_name %></strong> </h4>
+            <h5 class="card-text"><%= user.first_name %> a créé <%= user.gossips.count %> gossips</h5>
+            <h6 class="card-text"><%= user.city.name %></h6>
+            <footer class="footer">
+              <small class="text-muted">
+                <a href="<%= user_path(user.id) %>" class="btn btn-primary">Voir l'auteur</a>
+              </small>
+            </footer>
+          </div>
+      </div>
+    <% end %>

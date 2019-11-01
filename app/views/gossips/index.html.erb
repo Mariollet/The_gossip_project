@@ -1,9 +1,11 @@
   <%= render "shared/navbar" %>
 
-<br><h1>Voici tout les gossips :</h1><br>
-
-<%= link_to "--> Ajouter un gossip <--", new_gossip_path %><br>
-<%= flash[:danger] %><br><br>
+<div class="jumbotron"><br>
+  <h1 class="display-4">Voici tout les gossips :</h1>
+  <p class="lead"><%= link_to "--> Ajouter un gossip <--", new_gossip_path %></p>
+</div>
+    
+<%= flash[:danger] %>
 
 <% if @gossip.save %>
   <div class="alert alert-success" role="alert">
@@ -11,10 +13,18 @@
   </div>
 <% end %>
 
-<% @gossips.each do |gossip| %>
-  <a>- Auteur : <%= gossip.user.first_name %> <%= gossip.user.last_name %></a> | <%= link_to "Voir l'auteur", user_path(gossip.user.id) %><br>
-  <a>- Titre : <%= gossip.title %></a> | <%= link_to "Voir le gossip", gossip_path(gossip.id) %><br>
-  <a>- Contenu : <%= gossip.content %></a><br><br>
-<% end %>
-
-<%= link_to "--> Ajouter un gossip <--", new_gossip_path %><br>
+    <div class="card-columns">
+    <% @gossips.each do |gossip| %>
+      <div class="card">
+          <div class="card-body">
+            <h4 class="card-title"><strong><%= gossip.user.first_name %> <%= gossip.user.last_name %></strong></h4>
+            <h5 class="card-title"> <%= gossip.title %> :</h5>
+            <p class="card-text"> <%= gossip.content %> </p>
+            <footer class="footer">
+              <small class="text-muted">
+                <a href="<%= user_path(gossip.user.id) %>" class="btn btn-primary">Voir l'auteur</a> | <a href="<%= gossip_path(gossip.id) %>" class="btn btn-primary">Voir le gossip</a>
+              </small>
+            </footer>
+          </div>
+      </div>
+    <% end %>

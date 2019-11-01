@@ -1,13 +1,19 @@
   <%= render "shared/navbar" %>
 
-<br><h1>Voici toutes les villes :</h1><br>
+<div class="jumbotron"><br>
+  <h1 class="display-4">Voici toute les villes :</h1>
+</div>
 
-  <% if @city.save %>
-    <div class="alert alert-success" role="alert">
-      <p>Ville crée avec succés ! :</p>
-    </div>
-  <% end %>
-
+<div class="card-columns">
 <% @cities.each do |city| %>
-  Ville : <%= city.name %> | <%= link_to "Voir la ville", city_path(city.id) %><br>
-<% end %><br>
+  <div class="card">
+      <div class="card-body">
+        <h4 class="card-title"><strong><%= city.name %></strong></h4>
+        <footer class="footer">
+          <small class="text-muted">
+            <a href="<%= city_path(city.id) %>" class="btn btn-primary">Voir la ville</a>
+          </small>
+        </footer>
+      </div>
+  </div>
+<% end %>

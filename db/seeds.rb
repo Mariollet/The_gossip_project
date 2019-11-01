@@ -25,7 +25,7 @@ user_array = []
 end
 gossip_array = []
 50.times do |i|
-  g = Gossip.create!(title: Faker::Verb.base,
+  g = Gossip.create!(title: Faker::Verb.base.capitalize,
     content: Faker::ChuckNorris.fact,
     user: user_array.sample,
     city: city_array.sample)

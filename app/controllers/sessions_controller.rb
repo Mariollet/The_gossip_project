@@ -2,6 +2,13 @@ class SessionsController < ApplicationController
 
   def new
     @user = User.new
+    if City.find(1) =! nil
+      City.create(name: "Paris")
+      City.create(name: "Montpellier")
+      City.create(name: "Grenoble")
+      City.create(name: "Avignon")
+    end
+
   end
 
   def create
