@@ -2,7 +2,7 @@
 
 <div class="jumbotron"><br>
   <h1 class="display-4">Voici touts les gossips :</h1>
-  <p class="lead"><%= link_to "--> Ajouter un gossip <--", new_gossip_path %></p>
+  <a class="btn btn-info" href="<%= new_gossip_path %>">--> Ajouter un gossip <--</a>
 </div>
     
 <%= flash[:danger] %>
