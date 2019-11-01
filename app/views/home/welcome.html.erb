@@ -7,6 +7,7 @@
     <div class="jumbotron"><br>
       <h1 class="display-4">Bienvenue sur The Gossip Project</h1>
       <p class="lead">Rien de mieux que des gossips pour bien commencer la journée !</p>
+      <p class="lead"><%= link_to "--> Ajouter un gossip <--", new_gossip_path %></p>
     </div>
 
     <% if User.find_by(id: session[:user_id]) != nil %> 
