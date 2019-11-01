@@ -48,7 +48,7 @@
         <%=  f.text_area :bio, class:"form-control"%>
       </div>
       <div class= "form-group">
-        <label> City </label>
+        <label> - Ville : </label><br>
         <%= select(:user, :city_id, City.pluck(:name, :id), class: "form-control") %>
       </div>
       <div class ="form-group">
