@@ -35,7 +35,7 @@
             <p class="card-text"> <%= gossip.content %> </p>
             <footer class="blockquote-footer">
               <small class="text-muted">
-                <strong><%= gossip.user.first_name %></strong> <cite title="Détails du gossip"><%= link_to "voir détails", gossip_path(gossip.id) %></cite>
+                <strong><%= gossip.user.first_name %></strong> | <%= gossip.city.name %></strong> <cite title="Détails du gossip"><%= link_to "voir détails", gossip_path(gossip.id) %></cite>
               </small>
             </footer>
           </div>
