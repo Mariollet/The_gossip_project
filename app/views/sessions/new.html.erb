@@ -4,7 +4,7 @@
 
     <form action= <%= sessions_path %> method="POST" |f| ><br><br>
       <label class= 'form-group h1'><strong> Bienvenue sur The Gossip Project </strong></label><br>
-      <label class= 'form-group h3'> Veuillez vous connectez :</label><br>
+      <label class= 'form-group h3'> Veuillez vous connecter :</label><br>
       <%= flash[:danger] %><br><br>
       <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
       <label class= 'form-group h5'> Adresse email : </label><br>

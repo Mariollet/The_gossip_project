@@ -14,7 +14,7 @@
       <h2>Bienvenue <%= User.find_by(id: session[:user_id]).first_name %> !</h2>
     <%else%>
       <div class="alert alert-danger" role="alert"><br>
-        <p>Vous n'êtes pas connecter !<br>
+        <p>Vous n'êtes pas connecté !<br>
         <a class="btn btn-primary" href="<%= new_session_path %>">Se connecter</a> | <a class="btn btn-primary" href="<%= new_user_path %>">S'inscrire</a><br><br>
       </div>
     <% end %>
