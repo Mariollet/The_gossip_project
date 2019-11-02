@@ -2,7 +2,6 @@
 
 <div class="jumbotron"><br>
   <h1 class="display-4">Voici touts les gossips :</h1>
-  <a class="btn btn-info" href="<%= new_gossip_path %>">--> Ajouter un gossip <--</a>
 </div>
     
 <%= flash[:danger] %>
@@ -12,7 +11,7 @@
     <p>Gossip créer/modifier avec succés ! </p>
   </div>
 <% end %>
-
+  <a class="btn btn-info" href="<%= new_gossip_path %>">--> Ajouter un gossip <--</a><br><br>
     <div class="card-columns">
     <% @gossips.each do |gossip| %>
       <div class="card">
@@ -22,6 +21,7 @@
             <p class="card-text"> <%= gossip.content %> </p>
             <footer class="footer">
               <small class="text-muted">
+                <a><%= gossip.comments.count%> Commentaires</a><br>
                 <a href="<%= user_path(gossip.user.id) %>" class="btn btn-primary">Voir l'auteur</a> | <a href="<%= gossip_path(gossip.id) %>" class="btn btn-primary">Voir le gossip</a>
               </small>
             </footer>

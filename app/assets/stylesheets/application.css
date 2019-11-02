@@ -18,6 +18,8 @@
   margin-left: -42px;
   margin-right: -42px;
   margin-top: -20px;
+  background-image: url(gossip.png);
+  background-size: cover;
 }
  body {
    background-image: radial-gradient(rgb(151, 231, 255), rgb(62, 139, 240));

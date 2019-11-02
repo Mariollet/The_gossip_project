@@ -7,7 +7,6 @@
     <div class="jumbotron"><br>
       <h1 class="display-4">Bienvenue sur The Gossip Project</h1>
       <p class="lead">Rien de mieux que des gossips pour bien commencer la journée !</p>
-      <a class="btn btn-info" href="<%= new_gossip_path %>">--> Ajouter un gossip <--</a>
     </div>
 
     <% if User.find_by(id: session[:user_id]) != nil %> 
@@ -21,7 +20,7 @@
       </div>
     <% end %>
 
-
+    <a class="btn btn-info" href="<%= new_gossip_path %>">--> Ajouter un gossip <--</a><br><br>
     <a class="btn btn-primary" href="<%= gossips_path %>">Gossips</a> |
     <a class="btn btn-primary" href="<%= users_path %>">Auteurs</a> |
     <a class="btn btn-primary" href="<%= cities_path %>">Villes</a> 
@@ -33,6 +32,7 @@
           <div class="card-body">
             <h4 class="card-title"> <strong><%= gossip.title %></strong> :</h4>
             <p class="card-text"> <%= gossip.content %> </p>
+            <small class="text-muted"><a><%= gossip.comments.count%> Commentaires</a></small>
             <footer class="blockquote-footer">
               <small class="text-muted">
                 <strong><%= gossip.user.first_name %></strong> | <%= gossip.city.name %></strong> <cite title="Détails du gossip"><%= link_to "voir détails", gossip_path(gossip.id) %></cite>
