@@ -16,14 +16,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    if params[:user][:password] != params[:user][:confirm_password]
+    if params[:password] != params[:confirm_password]
       @user = user_new
-      flash[:danger] = "La confirmation du mot de passe doit correspondre au mot de passe saisi précédemment."
+      flash[:danger] = "La confirmation du mot de passe doit correspondre."
       render "users/new"
     else
       @user = user_new
       if @user.save
-        if params[:user][:password] != params[:user][:confirm_password]
+        if params[:password] != params[:confirm_password]
           render "users/new"
         end
         @users = User.all
@@ -43,12 +43,12 @@ class UsersController < ApplicationController
     @users = User.all
     @user = User.find(params[:id])
     @gossips = Gossip.all
-    if params[:user][:password] != params[:user][:confirm_password]
-      @user.update(gossip_params)
+    if params[:password] != params[:confirm_password]
+      @user.update(user_params)
       flash[:danger] = "La confirmation du mot de passe doit correspondre au mot de passe saisi précédemment."
       render "edit"
     else
-      if @user.update(gossip_params)
+      if @user.update(user_params)
         render "index"
       else
         render "edit"
@@ -67,7 +67,7 @@ class UsersController < ApplicationController
   private
 
   def user_new
-    User.new(first_name: params[:user][:first_name].capitalize,last_name: params[:user][:last_name].capitalize,age: params[:user][:age],city_id: params[:user][:city_id],email: params[:user][:email],password: params[:user][:password],bio: params[:user][:bio].capitalize)
+    User.new(first_name: params[:first_name].capitalize,last_name: params[:last_name].capitalize,age: params[:age],city_id: params[:user][:city_id],email: params[:email],password: params[:password],bio: params[:bio].capitalize)
   end
 
   def authenticate_user
@@ -77,7 +77,7 @@ class UsersController < ApplicationController
     end
   end
 
-  def gossip_params
+  def user_params
     user = params.require(:user).permit(:first_name,:last_name,:city_id,:password,:age,:bio)
   end
 

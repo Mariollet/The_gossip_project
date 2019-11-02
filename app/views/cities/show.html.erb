@@ -9,11 +9,11 @@
   </div>
   <div class="card-body">
     <h2 class="card-title"><strong><%= @city.name %></strong></h2><br>
-    <h4 class="card-title"> La ville a <%= @city.user.count %> auteurs :</h4><br>
+    <h4 class="card-title"> La ville a <%= @city.users.count %> auteurs :</h4><br>
     <p class="card-text"><% @user.each do |user| %>
       <li> <strong> <%= user.first_name %> </strong> <%= user.last_name %> | <%= link_to "Voir l'auteur", user_path(user) %>  </li>
     <% end %><br></p>
-    <h4 class="card-title"> La ville a <%= @city.gossip.count %> gossips :</h4><br>
+    <h4 class="card-title"> La ville a <%= @city.gossips.count %> gossips :</h4><br>
     <p class="card-text"><% @gossip.each do |gossip| %>
       <li> <strong> <%= gossip.title %> </strong> : <%= gossip.content %> | <%= link_to "Voir le gossip", gossip_path(gossip) %>  </li>
     <% end %><br></p>

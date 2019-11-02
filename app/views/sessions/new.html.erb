@@ -1,18 +1,32 @@
 <html>
   <%= render "shared/navbar" %>
   <body>
+    <br><br>
+    <div class="card text-center mx-auto my-2" style="max-width: 50rem;">
+      <div class="card-header text-muted">
+        <label class= 'form-group h1'><strong> Bienvenue sur The Gossip Project </strong></label><br>
+        <label class= 'form-group h3'> Veuillez vous connecter :</label><br>
+        <%= flash[:danger] %>
+      </div>
+      <div class="card-body">
+        <%= form_tag sessions_path, method: "post", class: "form-group" do %>
 
-    <form action= <%= sessions_path %> method="POST" |f| ><br><br>
-      <label class= 'form-group h1'><strong> Bienvenue sur The Gossip Project </strong></label><br>
-      <label class= 'form-group h3'> Veuillez vous connecter :</label><br>
-      <%= flash[:danger] %><br><br>
-      <input type ="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-      <label class= 'form-group h5'> Adresse email : </label><br>
-      <input type ="text" name="email"><br><br>
-      <label class= 'form-group h5'> Mot de passe : </label><br>
-      <input type ="password" name="password"><br><br>
-      <input type ="submit" value="Se connecter", class="btn btn-primary"> | <a href="<%= new_user_path %>" class="btn btn-primary">S'inscrire</a>
-    </form>
+          <div class="form-group form-check">
+            <%= label_tag 'Adresse email :' %>
+            <%= text_field_tag 'email', nil, class: "form-control" %>
+          </div>
+
+          <div class="form-group form-check">
+            <%= label_tag 'Mot de passe :' %>
+            <%= password_field_tag 'password', nil, class: "form-control" %>
+          </div>
+
+          <%= submit_tag "Se connecter", class: "btn btn-primary" %> |
+          <a class="btn btn-primary" href="<%= new_user_path %>">S'inscrire</a>
+
+          <% end %>
+      </div>
+    </div>
 
   </body>
 </html> 

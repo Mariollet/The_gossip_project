@@ -15,6 +15,7 @@
       <h2>Bienvenue <%= User.find_by(id: session[:user_id]).first_name %> !</h2>
     <%else%>
       <div class="alert alert-danger" role="alert"><br>
+        <%= flash[:danger] %>
         <p>Vous n'êtes pas connecté !<br>
         <a class="btn btn-info" href="<%= new_session_path %>">Se connecter</a> | <a class="btn btn-info" href="<%= new_user_path %>">S'inscrire</a><br><br>
       </div>
@@ -22,7 +23,6 @@
 
 
     <a class="btn btn-primary" href="<%= gossips_path %>">Gossips</a> |
-    <a class="btn btn-primary" href="<%= new_gossip_path %>">New Gossip</a> |          
     <a class="btn btn-primary" href="<%= users_path %>">Auteurs</a> |
     <a class="btn btn-primary" href="<%= cities_path %>">Villes</a> 
     <br><br>
