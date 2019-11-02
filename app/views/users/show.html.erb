@@ -23,6 +23,7 @@
     <h4 class="card-title"><strong><%= @user.first_name %> <%= @user.last_name%></strong></h4>
     <h6 class="card-text"><%= @user.bio %></h6>
     <h6 class="card-text"><%= @user.age %> ans</h6>
+    <h6 class="card-text">Profil crée le <%= @user.created_at.strftime("%Y-%m-%d") %></h6><br>
     <h5 class="card-title">L'auteur a créé <%= @user.gossips.count %> gossips :</h5><br>
     <p class="card-text"><% @gossip.each do |gossip| %>
       <li> <strong> <%= gossip.title %> </strong> : <%= gossip.content %> | <%= link_to "Voir le gossip", gossip_path(gossip) %>  </li>

@@ -18,6 +18,7 @@
       </ul>
       <%end%>
     <%end%>
+    <%= @gossip.updated_at.strftime("%Y-%m-%d %H:%M") %>
   </div>
   <div class="card-body">
     <h4 class="card-title"><strong><%= @gossip.user.first_name %> <%= @gossip.user.last_name%></strong></h4>
