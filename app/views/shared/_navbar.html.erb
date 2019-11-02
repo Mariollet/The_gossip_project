@@ -21,7 +21,6 @@
         <a class="nav-link" href="<%= contact_path %>"> Contact </a>
       </li>
     </ul>
-    </div>
   </div>
   <% if User.find_by(id: session[:user_id]) != nil %>
   <a class="btn btn-info"href="<%= user_path(User.find_by(id: session[:user_id]).id)%>"><%= User.find_by(id: session[:user_id]).first_name %></a> | 
