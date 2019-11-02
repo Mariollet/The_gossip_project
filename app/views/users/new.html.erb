@@ -25,42 +25,42 @@
         <%= form_tag users_path, method: "post", class: "form-group" do %>
 
           <div class="form-group form-check">
-            <%= label_tag 'Prénom' %>
-            <%= text_field_tag 'first_name', nil, class: "form-control" %>
+            <%= label_tag '- Prénom :' %>
+            <%= text_field_tag 'first_name', nil, class: "form-control", placeholder: "Ton prénom..." %>
           </div>
 
           <div class="form-group form-check">
-            <%= label_tag 'Nom' %>
-            <%= text_field_tag 'last_name', nil, class: "form-control" %>
+            <%= label_tag '- Nom :' %>
+            <%= text_field_tag 'last_name', nil, class: "form-control", placeholder: "Ton nom..." %>
           </div>
 
           <div class="form-group form-check">
-            <%= label_tag 'Email' %>
-            <%= text_field_tag 'email', nil, class: "form-control" %>
+            <%= label_tag '- Email :' %>
+            <%= text_field_tag 'email', nil, class: "form-control", placeholder: "Ton email..." %>
           </div>
 
           <div class="form-group form-check">
-            <%= label_tag 'Mot de passe' %>
-            <%= password_field_tag 'password', nil, class: "form-control" %>
+            <%= label_tag '- Mot de passe :' %>
+            <%= password_field_tag 'password', nil, class: "form-control", placeholder: "Minimum 6 caractères..." %>
           </div>
           <%= flash[:danger] %>
           <div class="form-group form-check">
-            <%= label_tag 'Confirmation du mot de passe' %>
-            <%= password_field_tag 'confirm_password', nil, class: "form-control" %>
+            <%= label_tag '- Confirmation du mot de passe :' %>
+            <%= password_field_tag 'confirm_password', nil, class: "form-control", placeholder: "Minimum 6 caractères..." %>
           </div>
 
           <div class="form-group form-check">
-            <%= label_tag 'Age' %>
-            <%= text_field_tag 'age', nil, class: "form-control" %>
+            <%= label_tag '- Age :' %>
+            <%= text_field_tag 'age', nil, class: "form-control", placeholder: "Ton âge..." %>
           </div>
 
           <div class="form-group form-check">
-            <%= label_tag 'Bio' %>
-            <%= text_area_tag 'bio', nil, class: "form-control" %>
+            <%= label_tag '- Bio :' %>
+            <%= text_area_tag 'bio', nil, class: "form-control", placeholder: "Ta description..." %>
           </div>
 
           <div class="form-group form-check">
-            <%= label_tag 'Ville' %>
+            <%= label_tag '- Ville :' %>
             <%= select(:user, :city_id, City.pluck(:name, :id), class: "form-control") %>
           </div><br>
           <%= submit_tag "Créer  ✅", class: "btn btn-primary" %><br>
