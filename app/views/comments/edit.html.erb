@@ -1,0 +1,22 @@
+<div class="jumbotron">
+  <h1 class="display-4">Éditer un commentaire 🖋</h1>
+  <p class="lead"></p>
+</div>
+
+<div class="card text-center mx-auto mb-5 mt-2" style="max-width: 50rem;">
+  <div class="card-header text-muted">
+    Editer le commentaire
+  </div>
+  <div class="card-body">
+
+    <%= form_tag gossip_comment_path(params[:gossip_id], params[:id]), method: "patch", class: "form-group" do %>
+      <div class="form-group form-check">
+        <%= label_tag 'Contenu de ton commentaire :' %>
+        <%= text_area_tag 'content', @comment.content, rows: 2, class: "form-control" %>
+      </div>
+      <%= submit_tag "Modifier ✅", class: "btn btn-primary" %>
+      <a href="<%= gossip_comment_path(params[:gossip_id], params[:id]) %>" class="btn btn-secondary" data-confirm="C'est ton dernier mot ?" data-method="DELETE">Supprimer</a>
+    <% end %>
+
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_31_130056) do
+ActiveRecord::Schema.define(version: 2019_11_02_174917) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,16 @@ ActiveRecord::Schema.define(version: 2019_10_31_130056) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id"
+    t.bigint "gossip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["gossip_id"], name: "index_comments_on_gossip_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "gossips", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -28,7 +38,9 @@ ActiveRecord::Schema.define(version: 2019_10_31_130056) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "city_id"
+    t.bigint "comments_id"
     t.index ["city_id"], name: "index_gossips_on_city_id"
+    t.index ["comments_id"], name: "index_gossips_on_comments_id"
     t.index ["user_id"], name: "index_gossips_on_user_id"
   end
 
@@ -42,10 +54,14 @@ ActiveRecord::Schema.define(version: 2019_10_31_130056) do
     t.string "email"
     t.bigint "city_id"
     t.string "password_digest"
+    t.bigint "comments_id"
     t.index ["city_id"], name: "index_users_on_city_id"
+    t.index ["comments_id"], name: "index_users_on_comments_id"
   end
 
   add_foreign_key "gossips", "cities"
+  add_foreign_key "gossips", "comments", column: "comments_id"
   add_foreign_key "gossips", "users"
   add_foreign_key "users", "cities"
+  add_foreign_key "users", "comments", column: "comments_id"
 end

@@ -28,5 +28,39 @@
     <a href="<%= user_path(@gossip.user.id) %>" class="btn btn-primary">Voir l'auteur</a>
   </div>
   
+  <div class="card text-center mx-auto" style="max-width: 40rem;">
+    <div class="card-header text-muted">
+      Commentaires : <%= @gossip.comments.count %>
+    </div>
+    <div class="card-body">
+
+      <% if @gossip.comments.count > 0 %>
+        <% @gossip.comments.each do |comment| %>
+          <h5 class="card-title">
+          <small><a><%= User.find(comment.user_id).first_name %> : </a></small><br>
+            <% if current_user != nil %>
+              <% if current_user.id == comment.user.id %>
+                <%= link_to 'Éditer', edit_gossip_comment_path(@gossip.id, comment) , class: 'btn btn-info btn-sm' %>            
+              <% end %>
+              <%end%>
+          </h5>
+          <p class="card-text"><%= comment.content %></p>
+        <% end %>
+      <% else %>
+        <p class="card-text">Pas encore de commentaires.</p>
+      <% end %>
+
+      <br>----------------------------------------------------------------------<br>
+
+      <%= form_tag gossip_comments_path(@gossip.id), method: "post", class: "form-group" do %>
+        <div class="form-group form-check">
+          <%= label_tag 'Contenu de ton commentaire :' %>
+          <%= text_area_tag 'content', nil, rows: 2, class: "form-control", placeholder: "Lâche toi..." %>
+        </div>
+        <%= submit_tag "Commenter ✅", class: "btn btn-primary" %>
+      <% end %>
+
+    </div><br>
+  </div>
+
 </div>
-<br>

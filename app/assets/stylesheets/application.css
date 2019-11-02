@@ -20,7 +20,7 @@
   margin-top: -20px;
 }
  body {
-   background-image:linear-gradient(rgb(236, 236, 236), rgb(82, 82, 82));
+   background-image: radial-gradient(rgb(148, 230, 255), rgb(62, 139, 240));
    margin: 42px;
    font-size: 1.4em;
    font-family: Georgia, 'Times New Roman', Times, serif;
